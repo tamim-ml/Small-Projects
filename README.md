@@ -118,7 +118,7 @@ Short description of the project goes here.
 ```text
 Small Project/
 │
-├── project-01/
+├── Area of triangle/
 │   └── README.md
 │
 ├── project-02/
