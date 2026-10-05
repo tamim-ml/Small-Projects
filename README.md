@@ -24,9 +24,9 @@
 
 <td width="50%" valign="top">
 
-### 01 · Project Name
+### 01 · Area of triangle
 
-Short description of the project goes here.
+This calculator will print Area of non equal triangle.
 
 **Tech**
 
