@@ -30,11 +30,11 @@ This calculator will print Area of non equal triangle.
 
 **Tech**
 
-`Python` `OOP`
+`Python` `Flask` `HTML, CSS`
 
 <br>
 
-<a href="./project-01">
+<a href="https://github.com/tamim-ml/Small-Projects/tree/main/Area%20of%20triangle">
   <strong>View Project →</strong>
 </a>
 
