@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Insight of data</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<style>
+	:root{
+		--bg: #f4f7f5;
+		--surface: #ffffff;
+		--ink: #14231b;
+		--muted: #5d6f64;
+		--line: #d5dfd9;
+		--accent: #1f9d5c;
+		--accent-dark: #17794a;
+		--accent-soft: rgba(31, 157, 92, .18);
+		--row-alt: #f0f5f2;
+		--head-bg: #e3f1e9;
+	}
+	@media (prefers-color-scheme: dark){
+		:root{
+			--bg: #0f1713;
+			--surface: #17221c;
+			--ink: #e8f1ec;
+			--muted: #93a79b;
+			--line: #2a3a31;
+			--accent: #3ccf84;
+			--accent-dark: #5fe0a0;
+			--accent-soft: rgba(60, 207, 132, .22);
+			--row-alt: #1b2922;
+			--head-bg: #20332a;
+		}
+	}
+	*{ box-sizing: border-box; }
+	body{
+		margin: 0;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		padding: 24px;
+		background-color: var(--bg);
+		color: var(--ink);
+		font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	}
+	.topbar{
+		width: 100%;
+		max-width: 960px;
+		display: flex;
+		justify-content: flex-end;
+	}
+	.btn{
+		display: inline-block;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 8px;
+		background: var(--accent);
+		color: #fff;
+		font-weight: 700;
+		font-size: 15px;
+		text-decoration: none;
+		transition: background .15s;
+	}
+	.btn:hover{ background: var(--accent-dark); }
+	.btn:focus-visible{ outline: none; box-shadow: 0 0 0 4px var(--accent-soft); }
+
+	.layout{
+		width: 100%;
+		max-width: 960px;
+		display: flex;
+		align-items: flex-start;
+		gap: 20px;
+	}
+	.card{
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 14px;
+		box-shadow: 0 12px 32px rgba(20, 35, 27, .08);
+	}
+	.insight{
+		flex: 1 1 auto;
+		min-width: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow-x: auto;
+		padding: 16px;
+	}
+	.insight table{
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 15px;
+		font-variant-numeric: tabular-nums;
+	}
+	.insight th,
+	.insight td{
+		padding: 12px 16px;
+		text-align: center;
+		border-bottom: 1px solid var(--line);
+	}
+	.insight thead th{
+		background: var(--head-bg);
+		color: var(--accent-dark);
+		font-weight: 700;
+	}
+	.insight tbody th{ color: var(--muted); font-weight: 500; }
+	.insight tbody tr:nth-child(even){ background: var(--row-alt); }
+	.insight tbody tr:last-child th,
+	.insight tbody tr:last-child td{ border-bottom: none; }
+	.insight tbody tr:hover{ background: var(--head-bg); }
+
+	.stats{
+		flex: 0 0 280px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.stat-box{
+		padding: 24px;
+		border-left: 5px solid var(--accent);
+	}
+	.stat-box h2{
+		margin: 0;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 1.9;
+		color: var(--muted);
+	}
+	.stat-box .val{
+		display: inline-block;
+		margin: 0 2px;
+		padding: 0 10px;
+		border-radius: 6px;
+		background: var(--head-bg);
+		color: var(--accent-dark);
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 760px){
+		.layout{ flex-direction: column; }
+		.stats{ flex: 1 1 auto; width: 100%; }
+		.insight{ width: 100%; }
+	}
+</style>
+<body>
+
+	<div class="topbar">
+		<a class="btn" href="/">Add Mode</a>
+	</div>
+
+	<div class="layout">
+		<div class='insight card'>
+			{{df_group_html | safe}}
+		</div>
+
+		<aside class="stats">
+			<div class="stat-box card">
+				<h2>Mood Good Maximum time: Time: <span class="val">{{df_group_max_index}}:00</span> Mode Average:<span class="val">{{df_group_max_values}}</span></h2>
+			</div>
+			<div class="stat-box card">
+				<h2>Mood Good Minimum time: Time: <span class="val">{{df_group_min_index}}:00</span> Mode Average:<span class="val">{{df_group_min_values}}</span></h2>
+			</div>
+		</aside>
+	</div>
+
+</body>
+</html>
