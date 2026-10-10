@@ -28,10 +28,17 @@ def insights():
 	df_group_html= df_group.to_frame().to_html()
 	print(df_group)
 	df_html= df.to_html(classes="The_data")
-	df_group_max_values=df_group.max()
-	df_group_max_index= df_group.argmax()
-	df_group_min_values= df_group.values.min()
-	df_group_min_index=df_group.values.argmin()
+	df_group_pd= pd.DataFrame(df_group)
+	df_group_max_index= df_group_pd["mode"].idxmax()
+	df_group_max_values=df_group_pd.max()
+
+	df_group_min_index=df_group_pd["mode"].idxmin()
+	df_group_min_values= df_group_pd.values.min()
+
+	
+	
+	
+	print(df_group[10])
 
 
 
