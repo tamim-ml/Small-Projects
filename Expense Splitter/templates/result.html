@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Result Page</title>
+	<style>
+		:root {
+			--ink: #12302f;
+			--paper: #eef3f1;
+			--card: #ffffff;
+			--line: #d3ddd9;
+			--muted: #5d716c;
+			--accent: #e9a916;
+		}
+		* { box-sizing: border-box; }
+		html, body { margin: 0; }
+		body {
+			min-height: 100vh;
+			padding: 32px 16px 48px;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		.wrap {
+			max-width: 440px;
+			margin: 0 auto;
+		}
+		h1 {
+			margin: 0 0 16px;
+			font-size: 1.9rem;
+			line-height: 1.2;
+			letter-spacing: -0.01em;
+		}
+		.card {
+			background: var(--card);
+			border: 1px solid var(--line);
+			border-top: 6px solid var(--accent);
+			border-radius: 14px;
+			padding: 8px 24px;
+			margin-bottom: 16px;
+		}
+		.row {
+			display: flex;
+			align-items: baseline;
+			gap: 10px;
+			padding: 14px 0;
+			border-bottom: 1px solid var(--line);
+		}
+		.row:last-child { border-bottom: 0; }
+		.row br { display: none; }
+		.row label:first-child {
+			flex: 1;
+			font-weight: 700;
+			overflow-wrap: anywhere;
+		}
+		.row label:nth-child(2) { color: var(--muted); }
+		.row label:nth-child(3) {
+			font-size: 1.15rem;
+			font-weight: 700;
+			font-variant-numeric: tabular-nums;
+			text-align: right;
+		}
+		.link {
+			display: block;
+			padding: 14px;
+			border: 2px solid var(--ink);
+			border-radius: 8px;
+			text-align: center;
+			color: var(--ink);
+			font-weight: 700;
+			text-decoration: none;
+		}
+		.link:hover { background: var(--ink); color: #fff; }
+		.link:focus-visible {
+			outline: 3px solid var(--accent);
+			outline-offset: 2px;
+		}
+		@media (prefers-reduced-motion: no-preference) {
+			.link { transition: background .15s, color .15s; }
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+	<div>
+		<h1>Calculate Result</h1>
+	</div>
+	<div class="card">
+		{%for i in df_group2.index%}
+		<div class="row"><label>{{i}}</label>  <label>--</label> <label>{{df_group2[i]}}</label><br></div>
+
+		{%endfor%}
+	</div>
+ <a class="link" href="/">Add new expense or remove all expense</a>
+	</div>
+</body>
+</html>

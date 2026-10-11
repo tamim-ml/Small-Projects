@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Add expense</title>
+	<style>
+		:root {
+			--ink: #12302f;
+			--paper: #eef3f1;
+			--card: #ffffff;
+			--line: #d3ddd9;
+			--muted: #5d716c;
+			--accent: #e9a916;
+			--accent-dark: #c98f08;
+			--danger: #b3422f;
+		}
+		* { box-sizing: border-box; }
+		html, body { margin: 0; }
+		body {
+			min-height: 100vh;
+			padding: 32px 16px 48px;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		.wrap {
+			max-width: 440px;
+			margin: 0 auto;
+		}
+		.card {
+			background: var(--card);
+			border: 1px solid var(--line);
+			border-radius: 14px;
+			padding: 24px;
+			margin-bottom: 16px;
+		}
+		.card.top { border-top: 6px solid var(--accent); }
+		form { display: flex; flex-direction: column; gap: 6px; }
+		label {
+			font-weight: 700;
+			font-size: 0.95rem;
+			margin-top: 10px;
+		}
+		label:first-child { margin-top: 0; }
+		input, select {
+			width: 100%;
+			padding: 12px 14px;
+			border: 1.5px solid var(--line);
+			border-radius: 8px;
+			background: #fbfdfc;
+			color: var(--ink);
+			font: inherit;
+		}
+		input:focus, select:focus, button:focus-visible, a:focus-visible {
+			outline: 3px solid var(--accent);
+			outline-offset: 2px;
+			border-color: var(--ink);
+		}
+		button {
+			margin-top: 16px;
+			padding: 12px 18px;
+			border: 0;
+			border-radius: 8px;
+			background: var(--accent);
+			color: var(--ink);
+			font: inherit;
+			font-weight: 700;
+			cursor: pointer;
+		}
+		button:hover { background: var(--accent-dark); }
+		.card.danger { border-color: #e4c5be; }
+		.card.danger button {
+			background: var(--danger);
+			color: #fff;
+		}
+		.card.danger button:hover { background: #8f3323; }
+		.link {
+			display: block;
+			padding: 14px;
+			border: 2px solid var(--ink);
+			border-radius: 8px;
+			text-align: center;
+			color: var(--ink);
+			font-weight: 700;
+			text-decoration: none;
+		}
+		.link:hover { background: var(--ink); color: #fff; }
+		@media (prefers-reduced-motion: no-preference) {
+			button, .link, input, select { transition: background .15s, color .15s, border-color .15s; }
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+	<div class="card top">
+		<form method='post'>
+			<label>Friend's Name: </label>
+			<input type="text" name="names">
+			<label>Expense Amount: </label>
+			<input type="number" name="expenses">
+			<label>Note: </label>
+			<input type="text" name="notes">
+			<button type="submit" >Entry</button>
+		</form>
+	</div>
+		<div class="card danger">
+			<form method='post'>
+				<select name="confirm">
+					<option value="not_remove">Don't Remove</option>
+					<option value="remove">Remove All</option>
+				</select>
+				<button type="submit">submit</button>
+			</form>
+		</div>
+		<a class="link" href="/result">See Result</a>
+	</div>
+</body>
+</html>
